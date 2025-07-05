@@ -117,7 +117,26 @@
   <div id="watson-assistant"></div>
   
  <!-- Watson Assistant Web Chat integration will be inserted here -->
-
+  <script>
+window.watsonAssistantChatOptions = {
+      integrationID: "4ec0cc97-1e76-43ce-a640-f463988b0c8f", // ✅ Your Integration ID
+      region: "eu-gb", // ✅ Your region
+      serviceInstanceID: "6ca256f4-f2b1-43e0-af2a-11ea736e98ab", // ✅ Your instance ID
+      onLoad: async (instance) => {
+        await instance.render({
+          container: document.getElementById("watson-assistant-container"), // ✅ Embeds inside chat box
+          hideCloseButton: true
+        });
+      }
+    };
+    setTimeout(() => {
+      const t = document.createElement('script');
+      t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" +
+              (window.watsonAssistantChatOptions.clientVersion || 'latest') +
+              "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
 </body>
 </html>
 
